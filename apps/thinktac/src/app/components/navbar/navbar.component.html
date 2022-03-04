@@ -1,0 +1,24 @@
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="assets/OIP.jpg" alt="logo">
+        </div>
+        <div class="search">
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text" pInputText placeholder="Search" [(ngModel)]="search" (input)="searchtext()" />
+            </span>
+            
+            <div class="sugg" *ngIf="show">
+                <ul>
+                    <li *ngFor="let data of suggestion" (click)="input(data.Name)">{{data.Name}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lang">
+            <label for="lang">Language</label>
+            <p-dropdown id="lang" [options]="cities" [(ngModel)]="selectedCity1" optionLabel="name" (onChange)="language()"></p-dropdown>               
+        </div>
+    </div>
+</header>

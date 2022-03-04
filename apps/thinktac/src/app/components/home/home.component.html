@@ -1,0 +1,26 @@
+<thinktac-navbar id="nav" (langu)="changeLang($event)" (searchstring)="searchresult($event)"></thinktac-navbar>
+<div class="container">
+    <div *ngFor="let d of data">
+        <div class="mode"*ngIf="mode">
+            <div class="cond" *ngIf="d.Version===selectedLang || selectedLang==='' && mode">
+                <div class="card" style="width: 18rem;">
+                    <img  [src]="d.IconUrl" [alt]="d.Name" class="card-img-top" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{d.Name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mode"*ngIf="!mode">
+            <div class="cond" *ngIf="search==='' || d.Name===search" >
+                <div class="card" style="width: 18rem;">
+                    <img  [src]="d.IconUrl" [alt]="d.Name" class="card-img-top" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{d.Name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
