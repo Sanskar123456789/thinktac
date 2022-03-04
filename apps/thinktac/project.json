@@ -1,0 +1,91 @@
+{
+  "projectType": "application",
+  "root": "apps/thinktac",
+  "sourceRoot": "apps/thinktac/src",
+  "prefix": "thinktac",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/thinktac",
+        "index": "apps/thinktac/src/index.html",
+        "main": "apps/thinktac/src/main.ts",
+        "polyfills": "apps/thinktac/src/polyfills.ts",
+        "tsConfig": "apps/thinktac/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/thinktac/src/favicon.ico", "apps/thinktac/src/assets"],
+        "styles": ["apps/thinktac/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/thinktac/src/environments/environment.ts",
+              "with": "apps/thinktac/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "thinktac:build:production"
+        },
+        "development": {
+          "browserTarget": "thinktac:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "thinktac:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/thinktac/src/**/*.ts",
+          "apps/thinktac/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/thinktac"],
+      "options": {
+        "jestConfig": "apps/thinktac/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

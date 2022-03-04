@@ -1,0 +1,28 @@
+{
+  "root": "apps/thinktac-e2e",
+  "sourceRoot": "apps/thinktac-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/thinktac-e2e/cypress.json",
+        "devServerTarget": "thinktac:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "thinktac:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/thinktac-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["thinktac"]
+}

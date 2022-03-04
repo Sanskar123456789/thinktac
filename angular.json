@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "thinktac": "apps/thinktac",
+    "thinktac-e2e": "apps/thinktac-e2e"
+  }
+}
