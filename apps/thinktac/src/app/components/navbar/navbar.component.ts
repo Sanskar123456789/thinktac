@@ -45,16 +45,22 @@ export class NavbarComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.service.getdata().pipe(takeUntil(this.endsub$)).subscribe(data => {
       this.data = data
-      console.log(data);
+    })
+
+    this.service.isClick.subscribe(data => {
+      if(data)this.show=false;
     })
   }
 
   language(): void {    
-    console.log(this.selectedCity1);
+
     this.langu.emit(this.selectedCity1.code);
   }
 
   searchtext(){
+    if(this.search==''){
+      this.searchstring.emit('all');
+    }
     this.suggestion = this.data.filter(item => item.Name.toLowerCase().includes(this.search.toLowerCase()))
     if(this.suggestion.length == 0){
       this.show= false;
@@ -70,5 +76,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
     this.show= false;
   }
   
-  
+  sugg(){
+    this.show= false;
+  }
 }

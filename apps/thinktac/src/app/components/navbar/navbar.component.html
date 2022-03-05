@@ -1,9 +1,10 @@
 <header>
-    <div class="container">
-        <div class="logo">
+    <div class="grid">
+        <div class="logo col-1">
             <img src="assets/OIP.jpg" alt="logo">
         </div>
-        <div class="search">
+        <div class="search col-4 col-offset-2">
+            
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input type="text" pInputText placeholder="Search" [(ngModel)]="search" (input)="searchtext()" />
@@ -15,8 +16,7 @@
                 </ul>
             </div>
         </div>
-
-        <div class="lang">
+        <div class="lang col-2 col-offset-1">
             <label for="lang">Language</label>
             <p-dropdown id="lang" [options]="cities" [(ngModel)]="selectedCity1" optionLabel="name" (onChange)="language()"></p-dropdown>               
         </div>

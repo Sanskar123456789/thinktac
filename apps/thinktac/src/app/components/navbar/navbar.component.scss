@@ -3,9 +3,7 @@ header{
     height: inherit;
     margin-bottom: 10px;
     padding:12px;
-    .container{
-        display:flex;
-        width: 100%;
+    .grid{
         .logo{
             width:10%;
             img{
@@ -16,9 +14,8 @@ header{
             }
         }
         .search{
+            margin-top: 10px;
             width:40%;
-            margin:10px;
-            margin-left: 50px;
             input{
                 width:100%;
             }
@@ -45,10 +42,8 @@ header{
             }
         }
         .lang{
-            margin-left: 20%;
-            float: right;
             label{
-                padding:3px;
+                padding:1px;
                 color:white;
                 font-size:1.3em;
                 font-weight:200

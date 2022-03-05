@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { DataService } from '../../service/data.service';
 interface model  {
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   constructor(private service: DataService) { }
   selectedLang="";
+  isclick=false;
   endsub$ = new Subject();
   data:model[]=[];
   search="";
@@ -26,7 +27,6 @@ export class HomeComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.service.getdata().pipe(takeUntil(this.endsub$)).subscribe(data => {
       this.data = data
-      console.log(data);
     })
   }
 
@@ -37,6 +37,15 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   searchresult(events: string){
     this.mode=false;
-    this.search = events;
+    if(events=='all'){
+      this.search='';
+      this.mode = false;
+    }else{
+      this.search = events;
+    }
+  }
+
+  @HostListener('click') click () {
+    this.service.isClick.next(true);
   }
 }
